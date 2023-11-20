@@ -16,8 +16,8 @@ For
 ![Mona Lisa](https://github.com/kushal-bits/Image-Denoising-using-Cpp-and-Rust/blob/main/tests/mona_lisa.pgm) we compare the execution time taken by C++ and Rust.
 
 ### Time Taken by C++
-![exec_time_cpp](https://github.com/kushal-bits/Image-Denoising-using-Cpp-and-Rust/blob/main/tests/exec_cpp.jpg)
+![exec_time_cpp](https://github.com/kushal-bits/Image-Denoising-using-Cpp-and-Rust/blob/main/tests/exec_time_cpp.jpg)
 
 ### Time Taken by Rust
-![exec_time_cpp](https://github.com/kushal-bits/Image-Denoising-using-Cpp-and-Rust/blob/main/tests/exec_rust.jpg)
+![exec_time_cpp](https://github.com/kushal-bits/Image-Denoising-using-Cpp-and-Rust/blob/main/tests/exec_time_rust.jpeg)
 
