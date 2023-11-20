@@ -2,10 +2,6 @@
 ## * Problem Statement:
 The primary objective of this project is to implement image denoising using the median filter technique in both C++ and Rust programming languages. The project aims to assess and compare the performance, readability, and efficiency of the two implementations. Input images in the Portable Gray Map (PGM) format will be provided, and the goal is to develop denoised images while considering execution time, memory usage, and code readability in both languages.
 
-1) Problem Statement:
-
-The primary objective of this project is to implement image denoising using the median filter technique in both C++ and Rust programming languages. The project aims to assess and compare the performance, readability, and efficiency of the two implementations. Input images in the Portable Gray Map (PGM) format will be provided, and the goal is to develop denoised images while considering execution time, memory usage, and code readability in both languages.
-
 POPL Angle:
 The POPL (Principles of Programming Languages) angle in this project lies in the adherence to fundamental programming principles in both C++ and Rust. Key aspects include proper error handling, use of functional programming constructs, modularity, and type safety. The project aligns with the principles of writing readable, maintainable, and efficient code while utilizing the features specific to each language.
 
