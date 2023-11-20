@@ -1,1 +1,2 @@
-# Image-Denoising-using-C-and-Rust
+# Image-Denoising-using-Cpp-and-Rust
+* Problem Statement:
