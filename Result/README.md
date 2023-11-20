@@ -19,5 +19,5 @@ For
 ![exec_time_cpp](https://github.com/kushal-bits/Image-Denoising-using-Cpp-and-Rust/blob/main/tests/exec_time_cpp.jpg)
 
 ### Time Taken by Rust
-![exec_time_cpp](https://github.com/kushal-bits/Image-Denoising-using-Cpp-and-Rust/blob/main/tests/exec_time_rust.jpeg)
+![exec_time_rs](https://github.com/kushal-bits/Image-Denoising-using-Cpp-and-Rust/blob/main/tests/exec_time_rs.jpeg)
 
