@@ -57,34 +57,37 @@ The software architecture for the image denoising project can follow a modular s
 
 
 ##   POPL Aspects:
-Here are some points related to POPL (Principles of Programming Languages) aspects in the provided code:
+Here are some points related to POPL (Principles of Programming Languages) aspects in the our `Rust` code:
 
-1. Ownership and Mutability:
-   - Lines 9-12: Creation of mutable vectors (`arra` and `arr`) demonstrates ownership and mutability in managing image data.
+1. Ownership in Rust:
+   - The use of vectors like `arra` and `arr` involves ownership concepts. Vectors in Rust have ownership semantics, and the ownership is transferred when passing them into functions or reassigning them. The vectors are created and manipulated within the `main` function, showcasing Rust's ownership system.
 
-2. File Handling and Error Handling:
-   - Lines 14-16, 26, 34, 43: File handling and error handling using the `Result` type on functions (`File::open`, `writeln!`) demonstrate practical IO operations.
+2. Mutability:
+   - The variables `arra`, `arr`, `row`, `col`, `numrows`, `numcols`, `max` are all marked as mutable using the `mut` keyword. This reflects Rust's emphasis on immutability by default and explicit mutability when needed. Mutable variables are modified throughout the program, demonstrating Rust's control over mutability.
 
 3. Lifetimes:
-   - Lifetimes are implicit in the use of references and borrows throughout the code, especially in the file reader (`lines` iterator).
+   - The use of lifetimes is implicit in the code, particularly in the way slices are borrowed and accessed within the loops. For example, `&mut arra[row - 1][col - 1]` represents a mutable borrow with a lifetime tied to the loop iteration. Lifetimes in Rust ensure that references remain valid for a specific scope and prevent dangling references.
 
-4. Pattern Matching :
-   - Line 20: The use of pattern matching to check the file version ("P2") demonstrates Rust's pattern matching for control flow.
+4. Error Handling:
+   - Rust's Result type and the `?` operator are utilized for error handling throughout the code. For instance, the `File::open("mona_lisa.pgm")?` expression and other instances where `Result` is used demonstrate Rust's approach to handling errors using the Result type.
 
-5. Iterators and Looping:
-   - Lines 28-76: Iterating through file lines using `lines()` iterator and various `for` loops showcases Rust's iterator pattern.
+5. Pattern Matching:
+   - The pattern matching capability is demonstrated in the section where the PGM file is read. The code checks if the first line of the file is "P2" and prints an error message if not. This reflects Rust's pattern matching syntax, providing a concise and expressive way to handle different cases.
 
-6. Array Indexing and Range:
-   - Lines 76-94: Array indexing (`arra[row][col]`) and range usage (`1..=numrows`, `1..=numcols`) demonstrate Rust's array manipulation.
+6. Trait Implementation:
+   - The use of traits is apparent in the code, especially with `BufRead` and `Write` traits. The `BufReader` and `BufWriter` types implement these traits, allowing seamless reading and writing operations. This showcases Rust's trait system, promoting code reuse and abstraction.
 
-7. Sorting and Mutable Borrowing:
-   - Lines 96-104: Sorting of the `window` array demonstrates a practical application of sorting in Rust. Mutable borrowing is used to update the original array.
+7. Array Indexing:
+   - The code extensively uses array indexing, e.g., `arra[row][col]`, which is a fundamental concept in array-based programming. Rust enforces array bounds checking at runtime, preventing common errors like buffer overflows. The code's reliance on safe array indexing demonstrates Rust's commitment to memory safety.
 
-8.Error Reporting and Logging: 
-  - Lines 18, 32: The use of `eprintln!` for error reporting and `println!` for general logging provides a way to communicate with the user.
+8. Functional Programming Style:
+   - The code employs functional programming style with iterator-based operations like `lines()`, `split_whitespace()`, and `sort()`. This aligns with Rust's support for functional programming paradigms, encouraging a declarative and expressive coding style.
 
-9. Performance Measurement:
-    - Lines 94-104, 112-118: The use of `Instant` to measure execution time and printing the elapsed time demonstrates Rust's focus on performance.
+9. File Handling:
+   - The code involves file handling using the `File` type from the `std::fs` module. Rust's file handling capabilities include safe and ergonomic abstractions for working with files, aligning with the language's focus on safety and performance.
+
+10. Performance Considerations:
+   - The use of arrays for image processing and the choice of algorithms (e.g., the median filter) reflects considerations for performance. Rust's zero-cost abstractions and emphasis on performance make it suitable for such tasks, allowing the developer to write high-level code without sacrificing performance.
 
 Difficulties faced:
 One of the primary challenges we encountered during the development process was related to dataset preparation, particularly in generating the appropriate dataset for our code. The task involved resizing .pgm and .pnm image files to fit the requirements of our project. Initially, this proved to be a complex undertaking due to the unique nature of these file formats. We also had to install external software like GIMP to open such file extensions. 
