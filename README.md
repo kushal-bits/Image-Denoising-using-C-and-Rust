@@ -47,14 +47,14 @@ The software architecture for the image denoising project can follow a modular s
    - Testing can be both local and, if applicable, remote (especially for performance tests).
 
 
-5.Reusability:
+ 5.Reusability:
    - The input/output handling components (reading/writing PGM files) can be reused from existing libraries or code snippets.
    - If there are established median filter libraries in C++ or Rust, they can be used or adapted for the project.
    - Language-agnostic algorithms for image processing may be reusable between the C++ and Rust implementations.
 
 
 
-6.Testing Component Placement:
+ 6.Testing Component Placement:
    - Unit tests can be run locally during development to ensure the correctness of individual functions.
    - Integration tests, especially those involving multiple modules, can be run locally.
    - Performance tests may involve remote testing to evaluate the software's behavior under different conditions.
