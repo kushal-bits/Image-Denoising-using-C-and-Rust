@@ -32,6 +32,7 @@ The software architecture for the image denoising project can follow a modular s
 
 2. Image Processing Module:
    - Implements the median filter algorithm for image denoising.
+   - Modified the existing median filter algorithm with higher performance results.
    - Separates the algorithmic logic from I/O operations for better modularity.
    - Handles the core functionality of processing pixels and applying the median filter.
 
@@ -39,20 +40,15 @@ The software architecture for the image denoising project can follow a modular s
    - Evaluates and compares performance metrics, code readability, and efficiency between C++ and Rust implementations.
    - Gathers data on execution time, memory usage, and any language-specific features used in each implementation.
 
-
-
 4. Testing Component:
    - Can be a separate module or part of the Image Processing Module.
    - Involves unit tests for individual functions/methods, integration tests for modules, and possibly benchmarking for performance evaluation.
    - Testing can be both local and, if applicable, remote (especially for performance tests).
 
-
 5. Reusability:
    - The input/output handling components (reading/writing PGM files) can be reused from existing libraries or code snippets.
    - If there are established median filter libraries in C++ or Rust, they can be used or adapted for the project.
    - Language-agnostic algorithms for image processing may be reusable between the C++ and Rust implementations.
-
-
 
 6. Testing Component Placement:
    - Unit tests can be run locally during development to ensure the correctness of individual functions.
@@ -60,47 +56,36 @@ The software architecture for the image denoising project can follow a modular s
    - Performance tests may involve remote testing to evaluate the software's behavior under different conditions.
 
 
-##  POPL Aspects:
+##   POPL Aspects:
 Here are some points related to POPL (Principles of Programming Languages) aspects in the provided code:
 
-1. Error Handling with Result:
-   - Lines: `fn main() -> std::io::Result<()> {`
-   - The use of `std::io::Result` indicates proper error handling. It follows the Result monad pattern, where functions return a `Result` to handle potential errors.
+1. Ownership and Mutability:
+   - Lines 9-12: Creation of mutable vectors (`arra` and `arr`) demonstrates ownership and mutability in managing image data.
 
-2. Immutable Variables:
-   - Lines: `let mut arra: Vec<Vec<i32>> = vec![vec![0; 2000]; 2000];`
-   - The use of `mut` indicates mutable variables, but most variables are not mutated after their initial assignment, promoting immutability where possible.
+2. File Handling and Error Handling:
+   - Lines 14-16, 26, 34, 43: File handling and error handling using the `Result` type on functions (`File::open`, `writeln!`) demonstrate practical IO operations.
 
-3. File I/O and Ownership:
-   - Lines: `let file = File::open("mona_lisa.pgm")?;`
-   - Ownership principles are followed when opening and handling files. The `File` instances take ownership of system resources and release them when they go out of scope.
+3. Lifetimes:
+   - Lifetimes are implicit in the use of references and borrows throughout the code, especially in the file reader (`lines` iterator).
 
-4. Functional Style Iteration:
-   - Lines: `for row in 0..=numrows {` and `for col in1..=numcols {` 
-- The use of iterators and functional-style looping constructs promotes a more declarative programming style, enhancing code readability and maintainability.
+4. Pattern Matching :
+   - Line 20: The use of pattern matching to check the file version ("P2") demonstrates Rust's pattern matching for control flow.
 
-5. Pattern Matching:
-   - Lines: `if let Some(Ok(input_line)) = lines.next() {`
-   - The code uses pattern matching (`if let`) to handle different cases during file reading, making the code more expressive and robust.
+5. Iterators and Looping:
+   - Lines 28-76: Iterating through file lines using `lines()` iterator and various `for` loops showcases Rust's iterator pattern.
 
-6. Code Modularity:
-   - The code is somewhat modular, with different sections dedicated to reading input, processing data, and writing output. Each section focuses on a specific task, following good modular programming practices.
+6. Array Indexing and Range:
+   - Lines 76-94: Array indexing (`arra[row][col]`) and range usage (`1..=numrows`, `1..=numcols`) demonstrate Rust's array manipulation.
 
-7. Constant Array Size:
-   - Lines: `let mut window: [i32; 9] = [0; 9];`
-   - The use of a fixed-size array for the 'window' indicates a specific design choice to have a constant-size data structure, which can lead to better performance in some cases.
+7. Sorting and Mutable Borrowing:
+   - Lines 96-104: Sorting of the `window` array demonstrates a practical application of sorting in Rust. Mutable borrowing is used to update the original array.
 
-8. Explicit Type Annotations:
-   - Lines: `let mut arra: Vec<Vec<i32>> = vec![vec![0; 2000]; 2000];`
-   - Explicitly annotating types enhances code readability and helps prevent potential type-related bugs.
+8.Error Reporting and Logging: 
+  - Lines 18, 32: The use of `eprintln!` for error reporting and `println!` for general logging provides a way to communicate with the user.
 
-9. Documentation and Comments:
-   - While not prevalent in the provided code, the inclusion of comments or documentation is essential for understanding the code's purpose and functionality. This adherence to good documentation practices aligns with POPL principles.
+9. Performance Measurement:
+    - Lines 94-104, 112-118: The use of `Instant` to measure execution time and printing the elapsed time demonstrates Rust's focus on performance.
 
-10. Avoiding Unnecessary Mutability:
-    - Lines: `for row in 0..=numrows { arra[row][0] = 0; }`
-    - The use of mutable variables is minimized where unnecessary, promoting a more functional style and reducing the risk of unintended side effects.
-
-Difficulties Faced:
-   - The code seems relatively well-structured and follows good practices. However, without a detailed understanding of the project requirements or the specific challenges faced during development, it's challenging to pinpoint difficulties. Overall, the code appears to align with POPL principles, emphasizing readability, maintainability, and robust error handling.
+Difficulties faced:
+One of the primary challenges we encountered during the development process was related to dataset preparation, particularly in generating the appropriate dataset for our code. The task involved resizing .pgm and .pnm image files to fit the requirements of our project. Initially, this proved to be a complex undertaking due to the unique nature of these file formats. We also had to install external software like GIMP to open such file extensions. 
 
