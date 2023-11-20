@@ -9,7 +9,7 @@ The POPL (Principles of Programming Languages) angle in this project lies in the
 While image denoising with median filters is a well-explored problem, the project's focus on comparing implementations in C++ and Rust provides a unique angle. While similar tasks may have been addressed previously, the specific comparison between these two languages for image denoising using median filters may not have been extensively explored.
 
 ### Differences in Solution:
-The project differentiates itself by implementing the same image denoising technique in both C++ and Rust, facilitating a direct comparison. The differences will be highlighted in terms of language-specific features, syntax, memory management, and overall coding practices. Any optimizations made for each language will be documented, providing valuable insights into the strengths and weaknesses of the respective implementations.
+The project differentiates itself by implementing the same image denoising technique in both C++ and Rust, facilitating a direct comparison. Major difference in the median filter has been described in `/Result/README.md` The differences will be highlighted in terms of language-specific features, syntax, memory management, and overall coding practices. Any optimizations made for each language will be documented, providing valuable insights into the strengths and weaknesses of the respective implementations.
 
 ### Challenges Faced:
 The challenges encountered during the project may include language-specific difficulties, optimization trade-offs, and adapting the algorithm to the idioms of C++ and Rust. Differences in memory management and performance considerations specific to each language may pose challenges that will be documented and analyzed in the comparative study.
